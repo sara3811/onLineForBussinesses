@@ -10,6 +10,8 @@ import { CashierLoginComponent } from './cashier-login/cashier-login.component';
 import { BusinessRegisterComponent } from './business-register/business-register.component';
 import { EnteranceComponent } from './enterance/enterance.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { CashierDeskComponent } from './cashier-desk/cashier-desk.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     LoginComponent,
     CashierLoginComponent,
     BusinessRegisterComponent,
-    EnteranceComponent, 
+    EnteranceComponent,
+    HomeComponent,
+    CashierDeskComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
    
   ],
   providers: [],

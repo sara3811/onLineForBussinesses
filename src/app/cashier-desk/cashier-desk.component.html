@@ -1,0 +1,35 @@
+<p mat-list-item (click)="sidenav.toggle()"  mat-list-item>פעולות לפקיד</p>
+
+  <mat-sidenav #sidenav >
+   
+
+    <mat-nav-list>
+
+      <a mat-list-item > Accounts </a>
+      <a mat-list-item > Create Account </a>
+      <a mat-list-item > Contacts </a>
+      <a mat-list-item > Create Contact </a>
+      <a mat-list-item > Activities </a>
+      <a mat-list-item > Create Activity </a>
+      <p mat-list-item (click)="sidenav.toggle()"  mat-list-item>Close</p>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <!--mat-sidenav-content>
+    <div style="height: 88vh;">
+
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content-->
+
+<mat-card>
+  <mat-card-title> </mat-card-title>
+  <mat-card-content>
+    <div *ngIf="nextTurn">
+      <p> -התור הבא יהיה בשעה :{{nextTurn.EstimatedHour|date:'shortTime'}}</p>
+    </div>
+
+  </mat-card-content>
+</mat-card>
+
+  
