@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-
+import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cashier-login',
   templateUrl: './cashier-login.component.html',
@@ -12,38 +13,49 @@ import { environment } from 'src/environments/environment';
 })
 export class CashierLoginComponent implements OnInit {
   myControl = new FormControl();
-  businesses: any[];
+  business: any;
   filteredbusinesses: Observable<any[]>;
   apiUri = '/businesses';
-  selectedBusiness: any;
-  selectedService:any;
-  selectedValue: string;
-  selectedCar: string;
+  selectedService: any;
 
-  foods: any[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
+
   ngOnInit() {
-    this.loadBusinesses();
+    // this.loadBusinesses();
   }
 
-  private _filter(value: any): any[] {
+  public CheckPassword(password: string) {
+
+    this.http.get(environment.apiUrl + this.apiUri+"/"+password).subscribe((business => {
+      this.business = business;
+      console.log(this.business);
+    }),
+    (error=>{Swal.fire('Oops...', 'password is wrong!', 'error')}))
+  }
+  next()
+  {
+    this.router.navigate(['/cashier-desk', this.selectedService.ServiceId]);
+  }
+  /*private _filter(value: any): any[] {
     console.log(this.filteredbusinesses);
     console.log(this.myControl.value);
     if (typeof (value) === 'string') {
       const filterValue = value.toLowerCase();
       return this.businesses.filter(option => option.BusinessName.toLowerCase().indexOf(filterValue) === 0);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f53e9171dccc26c7b2b7c47012fb68acf59c365a
     this.selectedBusiness = value;
     this.myControl.setValue(value.BusinessName);
     const filterValue = value.BusinessName.toLowerCase();
     return this.businesses.filter(option => option.BusinessName.toLowerCase().indexOf(filterValue) === 0);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f53e9171dccc26c7b2b7c47012fb68acf59c365a
   }
 
   loadBusinesses() {
@@ -55,5 +67,9 @@ export class CashierLoginComponent implements OnInit {
         map(value => this._filter(value))
       );
     });
+<<<<<<< HEAD
   }
+=======
+  }*/
+>>>>>>> f53e9171dccc26c7b2b7c47012fb68acf59c365a
 }

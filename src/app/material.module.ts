@@ -17,7 +17,6 @@ const modules = [
   MatIconModule,
   MatStepperModule,
   MatSelectModule,
-
 ];
 
 @NgModule({
