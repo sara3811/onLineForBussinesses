@@ -34,8 +34,10 @@ export class CashierLoginComponent implements OnInit {
   }
   next()
   {
-    this.router.navigate(['/cashier-desk', this.selectedService.ServiceId]);
+    this.router.navigate(['/navigator'])
+   // this.router.navigate(['/cashier-desk', this.selectedService.ServiceId]);
   }
+  //#region 
   /*private _filter(value: any): any[] {
     console.log(this.filteredbusinesses);
     console.log(this.myControl.value);
@@ -59,4 +61,5 @@ export class CashierLoginComponent implements OnInit {
       );
     });
   }*/
+  //#endregion
 }

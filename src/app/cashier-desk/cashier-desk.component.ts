@@ -27,7 +27,7 @@ export class CashierDeskComponent implements OnInit {
         this.nextTurn = turn;
         console.log(this.nextTurn);
       }), (error => {
-        Swal.fire('Oops...', error.error.Message, 'error')
+        Swal.fire('שים לב...', error.error.Message, 'info')
       })
 
       )
@@ -35,14 +35,16 @@ export class CashierDeskComponent implements OnInit {
   }
   getTurn() {
     this.acceptFlag = true;
+
   }
   completedTurn(flag) {
     if (flag == "true") {
-      this.turnService.completeTurn(this.nextTurn).subscribe((turn =>
-       { console.log(turn);
+      this.turnService.completeTurn(this.nextTurn).subscribe((turn => {
+        console.log(turn);
         this.nextTurn = turn;
       }
-      ));}
-   this.acceptFlag=false; 
+      ), (error => { Swal.fire('שים לב', error.error.Message, 'info') }))
+    }
+    this.acceptFlag = false;
   }
 }

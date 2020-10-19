@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { CashierDeskComponent } from './cashier-desk/cashier-desk.component';
 import { GetTurnComponent } from './get-turn/get-turn.component';
+import { NavigatorComponent } from './navigator/navigator.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { GetTurnComponent } from './get-turn/get-turn.component';
     HomeComponent,
     CashierDeskComponent,
     GetTurnComponent,
+    NavigatorComponent,
   ],
   imports: [
     BrowserModule,
