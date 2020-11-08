@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,9 +27,12 @@ constructor(private authService:AuthService) { }
   submit() {
     if (this.form.valid) {
       //קריאה לשרת לבדוק אם הוא משתמש רשום ואם לא:
+      environment.userName=this.form.value.username;
       this.authService.login(this.form.value.username,this.form.value.password);
+console.log(environment.userName)
       console.log(this.form);
     }
+   
   }
 
 }

@@ -34,8 +34,8 @@ export class CashierLoginComponent implements OnInit {
   }
   next()
   {
-    this.router.navigate(['/navigator'])
-   // this.router.navigate(['/cashier-desk', this.selectedService.ServiceId]);
+    
+    this.router.navigate(['/cashier-desk', this.selectedService.ServiceId]);
   }
   //#region 
   /*private _filter(value: any): any[] {
@@ -45,10 +45,12 @@ export class CashierLoginComponent implements OnInit {
       const filterValue = value.toLowerCase();
       return this.businesses.filter(option => option.BusinessName.toLowerCase().indexOf(filterValue) === 0);
     }
+
     this.selectedBusiness = value;
     this.myControl.setValue(value.BusinessName);
     const filterValue = value.BusinessName.toLowerCase();
     return this.businesses.filter(option => option.BusinessName.toLowerCase().indexOf(filterValue) === 0);
+
   }
 
   loadBusinesses() {
@@ -60,6 +62,11 @@ export class CashierLoginComponent implements OnInit {
         map(value => this._filter(value))
       );
     });
+
+  }
+
   }*/
+
   //#endregion
+
 }

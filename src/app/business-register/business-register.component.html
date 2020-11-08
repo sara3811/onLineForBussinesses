@@ -1,54 +1,102 @@
-
 <mat-horizontal-stepper linear #stepper>
-    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>הכנס פרטי עסק</ng-template>
-        <mat-form-field>
-          <mat-label>שם העסק</mat-label>
-          <input matInput formControlName="firstCtrl" placeholder="" required>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>כתובת העסק</mat-label>
-          <input matInput  placeholder="" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>הבא</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>זמני פעילות העסק</ng-template>
-        <mat-form-field>
-          <mat-label> מספר עובדים במשמרת</mat-label>
-          <input matInput type="number" formControlName="secondCtrl" placeholder="" required>
-        </mat-form-field>
-       
-        <mat-form-field appearance="fill">
-          <mat-label>ימי פעילות:</mat-label>
-          <mat-select  [formControl]="days" multiple>
-            <mat-select-trigger>
-              {{days.value ? days.value[0] : ''}}
-              <span *ngIf="days.value?.length > 1" class="example-additional-selection">
-                (+{{days.value.length - 1}} {{days.value?.length === 2 ? 'other' : 'others'}})
-              </span>
-            </mat-select-trigger>
-            <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>הקודם</button>
-          <button mat-button matStepperNext>הבא</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+  <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel> פרטי עסק</ng-template>
+      <mat-form-field>
+        <mat-label>שם העסק</mat-label>
+        <input matInput formControlName="firstCtrl" placeholder="" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>כתובת העסק</mat-label>
+        <input matInput placeholder="רחוב" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>כתובת העסק</mat-label>
+        <input type="number" matInput placeholder="מספר" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>כתובת העסק</mat-label>
+        <input matInput placeholder="עיר" required>
+      </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <mat-form-field appearance="fill">
+          <mat-label>בחר סיסמה לעסק</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>אמת סיסמה</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
       </div>
-    </mat-step>
-  </mat-horizontal-stepper>
-  
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>בחר סיסמת מנהל</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>אמת סיסמת מנהל</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperNext>הבא</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>שירותים לעסק</ng-template>
+      <!--services???-->
+      <!--ngFor-->
+      <app-service></app-service>
+      <div>
+        <button mat-button matStepperPrevious>הקודם</button>
+        <button mat-button matStepperNext>הבא</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>זמני פעילות העסק </ng-template>
+      <app-activity-time>
+        <button mat-button (click)="addActivityTime()">add</button>
+      </app-activity-time>
+      <div>
+        <button mat-button matStepperPrevious>הקודם</button>
+        <button mat-button matStepperNext>הבא</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>סיום</ng-template>
+    <p>נרשמת בהצלחה.</p>
+    <div>
+      <button mat-button matStepperPrevious>חזרה</button>
+      <button mat-button (click)="stepper.reset()">נקה הכל</button>
+      <button mat-button>סיום הרשמה</button>
+    </div>
+  </mat-step>
+
+</mat-horizontal-stepper>

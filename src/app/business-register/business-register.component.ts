@@ -9,10 +9,13 @@ export class BusinessRegisterComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   isEditable = false;
+  activityTimes:any[];
+  hide=true;
+  
+  constructor(private _formBuilder: FormBuilder) { }
   days = new FormControl();
 
   daysList: string[] = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי'];
-  constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -21,5 +24,9 @@ export class BusinessRegisterComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+  }
+
+  addActivityTime() {
+
   }
 }

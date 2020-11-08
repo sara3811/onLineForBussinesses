@@ -11,6 +11,9 @@ import { BusinessRegisterComponent } from './business-register/business-register
 import { EnteranceComponent } from './enterance/enterance.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { ActivityTimeComponent } from './activity-time/activity-time.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ServiceComponent } from './service/service.component';
 import { CashierDeskComponent } from './cashier-desk/cashier-desk.component';
 import { GetTurnComponent } from './get-turn/get-turn.component';
 import { NavigatorComponent } from './navigator/navigator.component';
@@ -24,6 +27,8 @@ import { NavigatorComponent } from './navigator/navigator.component';
     BusinessRegisterComponent,
     EnteranceComponent,
     HomeComponent,
+    ActivityTimeComponent,
+    ServiceComponent,
     CashierDeskComponent,
     GetTurnComponent,
     NavigatorComponent,
@@ -36,6 +41,7 @@ import { NavigatorComponent } from './navigator/navigator.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDatepickerModule
    
   ],
   providers: [],

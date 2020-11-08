@@ -9,6 +9,7 @@ export class EnteranceComponent implements OnInit {
 
   constructor() { }
 
+ 
   ngOnInit(): void {
   }
 

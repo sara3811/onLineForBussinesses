@@ -30,7 +30,7 @@ export class AuthService {
 
     logout() {
         localStorage.removeItem(this.key);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login']);0
     }
 
     //signup(){}
