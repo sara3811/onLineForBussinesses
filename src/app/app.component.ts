@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
 
 import { environment } from 'src/environments/environment';
 @Component({
@@ -8,5 +9,10 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   title = 'onLineForBussinesses';
-  userName= environment.userName
+  
+  constructor(public userService:AuthService)
+  {
+
+  }
+
 }

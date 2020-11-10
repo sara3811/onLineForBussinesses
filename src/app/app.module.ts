@@ -17,6 +17,7 @@ import { ServiceComponent } from './service/service.component';
 import { CashierDeskComponent } from './cashier-desk/cashier-desk.component';
 import { GetTurnComponent } from './get-turn/get-turn.component';
 import { NavigatorComponent } from './navigator/navigator.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { NavigatorComponent } from './navigator/navigator.component';
     CashierDeskComponent,
     GetTurnComponent,
     NavigatorComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

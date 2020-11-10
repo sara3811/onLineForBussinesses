@@ -9,8 +9,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule}  from '@angular/material/list'
+import {MatListModule}  from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatMenuModule} from '@angular/material/menu';
+
+
 const modules = [
+  MatMenuModule,
   MatCardModule,
   MatInputModule,
   MatButtonModule,
@@ -20,7 +25,8 @@ const modules = [
   MatStepperModule,
   MatSelectModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  MatExpansionModule
 ];
 
 @NgModule({
