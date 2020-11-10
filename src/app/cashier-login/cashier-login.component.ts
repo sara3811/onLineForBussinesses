@@ -18,7 +18,7 @@ export class CashierLoginComponent implements OnInit {
   apiUri = '/businesses';
   selectedService: any;
 
-  constructor(private http: HttpClient,private router:Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     // this.loadBusinesses();
@@ -26,14 +26,13 @@ export class CashierLoginComponent implements OnInit {
 
   public CheckPassword(password: string) {
 
-    this.http.get(environment.apiUrl + this.apiUri+"/"+password).subscribe((business => {
+    this.http.get(environment.apiUrl + this.apiUri + "/" + password).subscribe((business => {
       this.business = business;
       console.log(this.business);
     }),
-    (error=>{Swal.fire('Oops...', 'password is wrong!', 'error')}))
+      (error => { Swal.fire('Oops...', 'password is wrong!', 'error') }))
   }
-  next()
-  {
+  next() {
     this.router.navigate(['/cashier-desk', this.selectedService.ServiceId]);
   }
   /*private _filter(value: any): any[] {
@@ -43,19 +42,10 @@ export class CashierLoginComponent implements OnInit {
       const filterValue = value.toLowerCase();
       return this.businesses.filter(option => option.BusinessName.toLowerCase().indexOf(filterValue) === 0);
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> f53e9171dccc26c7b2b7c47012fb68acf59c365a
     this.selectedBusiness = value;
     this.myControl.setValue(value.BusinessName);
     const filterValue = value.BusinessName.toLowerCase();
     return this.businesses.filter(option => option.BusinessName.toLowerCase().indexOf(filterValue) === 0);
-<<<<<<< HEAD
-
-
-=======
->>>>>>> f53e9171dccc26c7b2b7c47012fb68acf59c365a
   }
 
   loadBusinesses() {
@@ -67,9 +57,6 @@ export class CashierLoginComponent implements OnInit {
         map(value => this._filter(value))
       );
     });
-<<<<<<< HEAD
-  }
-=======
+
   }*/
->>>>>>> f53e9171dccc26c7b2b7c47012fb68acf59c365a
 }

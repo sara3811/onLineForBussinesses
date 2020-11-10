@@ -9,25 +9,24 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
 
   //@Input() error: string | null;
- // @Output() submitEM = new EventEmitter();
+  // @Output() submitEM = new EventEmitter();
 
- form: FormGroup = new FormGroup({
+  form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   });
 
-constructor(private authService:AuthService) { }
- 
+  constructor(private authService: AuthService) { }
+
 
   ngOnInit(): void {
   }
- 
- 
+
+
   submit() {
     if (this.form.valid) {
-      //קריאה לשרת לבדוק אם הוא משתמש רשום ואם לא:
-      this.authService.login(this.form.value.username,this.form.value.password);
-      console.log(this.form);
+      this.authService.login(this.form.value.username, this.form.value.password);
+      console.log("form: ",this.form);
     }
   }
 

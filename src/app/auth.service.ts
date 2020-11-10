@@ -20,6 +20,7 @@ export class AuthService {
             .httpClient
             .post<any>(`${environment.apiUrl}/credentials`, user)
             .subscribe((user: any) => {
+                console.log(this.key, JSON.stringify(user));
                 localStorage.setItem(this.key, JSON.stringify(user));
                 this.router.navigate(['/']);
 
