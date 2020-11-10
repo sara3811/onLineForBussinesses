@@ -6,6 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { templateJitUrl } from '@angular/compiler';
+
 @Component({
   selector: 'app-cashier-login',
   templateUrl: './cashier-login.component.html',
@@ -18,7 +21,7 @@ export class CashierLoginComponent implements OnInit {
   apiUri = '/businesses';
   selectedService: any;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient,private router:Router,private userService:AuthService) { }
 
   ngOnInit() {
     // this.loadBusinesses();
@@ -29,12 +32,17 @@ export class CashierLoginComponent implements OnInit {
     this.http.get(environment.apiUrl + this.apiUri + "/" + password).subscribe((business => {
       this.business = business;
       console.log(this.business);
+      this.userService.kind=2;
+
     }),
       (error => { Swal.fire('Oops...', 'password is wrong!', 'error') }))
   }
-  next() {
+  next()
+  {
+    
     this.router.navigate(['/cashier-desk', this.selectedService.ServiceId]);
   }
+  //#region 
   /*private _filter(value: any): any[] {
     console.log(this.filteredbusinesses);
     console.log(this.myControl.value);

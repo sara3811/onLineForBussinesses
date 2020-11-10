@@ -14,8 +14,12 @@ export class TurnService {
   getNextTurn(serviceId): Observable<any> {
     return this.http.get(environment.apiUrl + this.apiUri + "/" + serviceId)
   }
+  acceptTurn(turn:any):Observable<any>{
+    return this.http.put(environment.apiUrl + this.apiUri,turn)
+  }
 
   completeTurn(turn:any):Observable<any>{
     return this.http.put(environment.apiUrl + this.apiUri,turn)
   }
+
 }

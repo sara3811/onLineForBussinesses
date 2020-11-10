@@ -27,22 +27,51 @@ export class CashierDeskComponent implements OnInit {
         this.nextTurn = turn;
         console.log(this.nextTurn);
       }), (error => {
-        Swal.fire('Oops...', error.error.Message, 'error')
+        Swal.fire('שים לב...', error.error.Message, 'info')
       })
 
       )
     });
   }
-  getTurn() {
-    this.acceptFlag = true;
+
+  acceptTurn() {
+    this.turnService.acceptTurn(this.nextTurn).subscribe((turn => {
+      console.log(turn);
+      this.nextTurn = turn;
+      this.acceptFlag = true;
+    }))
   }
-  completedTurn(flag) {
-    if (flag == "true") {
-      this.turnService.completeTurn(this.nextTurn).subscribe((turn =>
-       { console.log(turn);
+
+  completeTurn() {
+    if (this.acceptFlag) {
+      this.turnService.completeTurn(this.nextTurn).subscribe((turn => {
+        console.log(turn);
         this.nextTurn = turn;
+        this.acceptFlag = false;
       }
-      ));}
-   this.acceptFlag=false; 
+      ), (error => { Swal.fire('שים לב', error.error.Message, 'info') }))
+    }
   }
+
+  addUnusualTurn()
+  {
+Swal.fire({
+  title: 'האם אתה בטוח?',
+  text: "הקדמת תור הינה רק בהתאם לנהלי העסק והרשאות המנהל!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: 'rgb(245 165 54)',
+  cancelButtonColor: 'rgb(162 171 172)',
+  confirmButtonText: 'כן ,אני יודע מה אני עושה!'
+}).then((result) => {
+  if (result.value) {
+    Swal.fire(
+      'התור נוסף בהצלחה!',
+      'הלקוח נרשם כראשון בתור.',
+      'success'
+    )
+  }
+})
+  }
+
 }

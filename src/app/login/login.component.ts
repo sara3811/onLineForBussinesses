@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,9 +26,12 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
+      //קריאה לשרת לבדוק אם הוא משתמש רשום ואם לא:   
       this.authService.login(this.form.value.username, this.form.value.password);
-      console.log("form: ",this.form);
+      console.log(environment.userName)
+      console.log(this.form);
     }
+
   }
 
 }

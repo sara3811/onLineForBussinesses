@@ -8,14 +8,20 @@ import { environment } from '../environments/environment';
 export class AuthService {
 
     private key = 'currentUser';
-
+    public flag = false;
+    public kind = 0;
+    public userName = '';
     constructor(
         private httpClient: HttpClient,
         private router: Router
     ) { }
 
     login(name, password) {
+        this.flag = true;
         let user = { 'userName': name, 'password': password };
+        this.kind = 1;
+        //פונקציה שבודקת בשרת האם הסיסמה של המנהל
+        this.userName = name;
         this
             .httpClient
             .post<any>(`${environment.apiUrl}/credentials`, user)
@@ -31,12 +37,16 @@ export class AuthService {
 
     logout() {
         localStorage.removeItem(this.key);
-        this.router.navigate(['/login']);
+        this.userName = '';
+        this.flag = false;
+        this.router.navigate(['/managerLogin']);
+        
     }
 
     //signup(){}
 
     getCurrentUser() {
+
         return localStorage.getItem(this.key);
     }
 }
