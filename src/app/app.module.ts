@@ -18,7 +18,9 @@ import { CashierDeskComponent } from './cashier-desk/cashier-desk.component';
 import { GetTurnComponent } from './get-turn/get-turn.component';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { UserComponent } from './user/user.component';
-
+import {CalendarModule} from 'primeng/calendar';
+import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,10 @@ import { UserComponent } from './user/user.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    CalendarModule,
+    InputTextModule,
+    ButtonModule
    
   ],
   providers: [],

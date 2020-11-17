@@ -1,6 +1,6 @@
 <mat-form-field>
     <mat-label> מספר עובדים במשמרת</mat-label>
-    <input matInput type="number" formControlName="secondCtrl" placeholder="" required>
+    <input matInput type="number" formControlName="third" placeholder="" required>
 </mat-form-field>
 
 <mat-form-field appearance="fill">
@@ -15,8 +15,14 @@
         <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
     </mat-select>
 </mat-form-field>
+<!--div class="p-fluid p-grid p-formgrid"-->
 
-<mat-form-field>
-    <mat-label>שעת התחלה</mat-label>
-    <input matInput type="time">
-</mat-form-field>
+    <div class="p-field p-col-12 p-md-4">
+        <label for="timeonly">שעת התחלה</label>
+        <p-calendar [(ngModel)]="startTime" [timeOnly]="true" inputId="timeonly"></p-calendar>
+    </div>
+    <div class="p-field p-col-12 p-md-4">
+        <label for="timeonly">שעת סיום</label>
+        <p-calendar [(ngModel)]="endTime" [timeOnly]="true" inputId="timeonly"></p-calendar>
+    </div>
+<!--/div-->

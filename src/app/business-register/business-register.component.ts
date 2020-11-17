@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-business-register',
   templateUrl: './business-register.component.html',
@@ -11,8 +12,9 @@ export class BusinessRegisterComponent implements OnInit {
   thirdFormGroup: FormGroup;
   isEditable = false;
   activityTimes: any[];
-
-
+  newBusiness: any;
+  title;
+  value2;
   hide1 = true;
   hide2 = true;
   hide3 = true;
@@ -26,23 +28,32 @@ export class BusinessRegisterComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = new FormGroup({
       businessName: new FormControl(),
-      adress_street:new FormControl(),
-      adress_num:new FormControl(),
-      adress_city:new FormControl(),
-      password:new FormControl(),
-      adminPassword:new FormControl()
+      adress_street: new FormControl(),
+      adress_num: new FormControl(),
+      adress_city: new FormControl(),
+      password: new FormControl(),
+      adminPassword: new FormControl()
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+    this.secondFormGroup = new FormGroup({
+      category:new FormControl(),
+      serviceName:new FormControl(),
+      isAdvanceEnable:new FormControl(),
+      numOfDays:new FormControl()
     });
-    /*this.thirdFormGroup = this._formBuilder.group({
+    this.thirdFormGroup = this._formBuilder.group({
+
       thirdCtrl: ['', Validators.required]
-    });*/
+    });
   }
 
   confirmFirstStep() {
-   // console.log("busines details:", this.businessName,this.adress_street,this.adress_num,this.adress_street,this.password,this.adminPassword)
-   console.log(this.firstFormGroup)
+    // console.log("busines details:", this.businessName,this.adress_street,this.adress_num,this.adress_street,this.password,this.adminPassword)
+    //this.newBusiness.BusinessName =
+    console.log("first form group: ", this.firstFormGroup.controls)
+  }
+
+  confirmSecondStep(){
+    console.log("second form group: ", this.secondFormGroup.controls)
   }
 
   saveBusiness() {

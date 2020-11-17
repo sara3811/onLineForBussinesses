@@ -1,6 +1,7 @@
+
+
 <mat-horizontal-stepper linear #stepper>
   <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel> פרטי עסק</ng-template>
       <mat-form-field>
@@ -70,13 +71,13 @@
       <app-service></app-service>
       <div>
         <button mat-button matStepperPrevious>הקודם</button>
-        <button mat-button matStepperNext>הבא</button>
+        <button mat-button matStepperNext (click)="confirmSecondStep()">הבא</button>
       </div>
     </form>
   </mat-step>
 
 
-  <!--mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
+  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>זמני פעילות העסק </ng-template>
       <app-activity-time>
@@ -87,7 +88,7 @@
         <button mat-button matStepperNext>הבא</button>
       </div>
     </form>
-  </mat-step-->
+  </mat-step>
 
   <mat-step>
     <ng-template matStepLabel>סיום</ng-template>

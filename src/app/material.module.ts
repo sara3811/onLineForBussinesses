@@ -12,6 +12,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule}  from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 const modules = [
@@ -26,7 +28,8 @@ const modules = [
   MatSelectModule,
   MatSidenavModule,
   MatListModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatCheckboxModule
 ];
 
 @NgModule({
