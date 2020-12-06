@@ -39,7 +39,6 @@ export class CashierLoginComponent implements OnInit {
   }
   next()
   {
-    
     this.router.navigate(['/cashier-desk', this.selectedService.ServiceId]);
   }
   //#region 

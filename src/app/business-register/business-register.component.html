@@ -1,6 +1,4 @@
-
-
-<mat-horizontal-stepper linear #stepper>
+<mat-horizontal-stepper  #stepper>
   <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel> פרטי עסק</ng-template>
@@ -32,7 +30,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label>אמת סיסמה</mat-label>
-          <input matInput [type]="hide2 ? 'password' : 'text'">
+          <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="confirmPassword">
           <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide2">
             <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -50,7 +48,7 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>אמת סיסמת מנהל</mat-label>
-          <input matInput [type]="hide4 ? 'password' : 'text'">
+          <input matInput [type]="hide4 ? 'password' : 'text'" formControlName="confirmAdminPassword">
           <button mat-icon-button matSuffix (click)="hide4 = !hide4" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide4">
             <mat-icon>{{hide4 ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -80,12 +78,11 @@
   <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>זמני פעילות העסק </ng-template>
-      <app-activity-time>
-        <button mat-button (click)="addActivityTime()">add</button>
-      </app-activity-time>
+      <app-activity-time>      </app-activity-time>
+      <button mat-button (click)="addActivityTime()">add</button>
       <div>
         <button mat-button matStepperPrevious>הקודם</button>
-        <button mat-button matStepperNext>הבא</button>
+        <button mat-button (click)="confirmThirdStep()" matStepperNext>הבא</button>
       </div>
     </form>
   </mat-step>

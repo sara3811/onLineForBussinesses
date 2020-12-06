@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule, FormControlName } from '@angular/forms';
 
 @Component({
   selector: 'app-business-register',
   templateUrl: './business-register.component.html',
-  styleUrls: ['./business-register.component.scss']
+  styleUrls: ['./business-register.component.scss'],
+
 })
 export class BusinessRegisterComponent implements OnInit {
   firstFormGroup: FormGroup;
@@ -32,7 +33,9 @@ export class BusinessRegisterComponent implements OnInit {
       adress_num: new FormControl(),
       adress_city: new FormControl(),
       password: new FormControl(),
-      adminPassword: new FormControl()
+      confirmPassword: new FormControl(),
+      adminPassword: new FormControl(),
+      confirmAdminPassword: new FormControl()
     });
     this.secondFormGroup = new FormGroup({
       category:new FormControl(),
@@ -40,20 +43,26 @@ export class BusinessRegisterComponent implements OnInit {
       isAdvanceEnable:new FormControl(),
       numOfDays:new FormControl()
     });
-    this.thirdFormGroup = this._formBuilder.group({
-
-      thirdCtrl: ['', Validators.required]
-    });
+    this.thirdFormGroup = new FormGroup({
+      numOfWorkers:new FormControl(),
+      days:new FormControl()
+    })
   }
 
   confirmFirstStep() {
     // console.log("busines details:", this.businessName,this.adress_street,this.adress_num,this.adress_street,this.password,this.adminPassword)
     //this.newBusiness.BusinessName =
-    console.log("first form group: ", this.firstFormGroup.controls)
+    console.log("first form group: ", this.firstFormGroup.controls);
+    console.log("name:", this.firstFormGroup.value["businessName"]);
   }
 
   confirmSecondStep(){
     console.log("second form group: ", this.secondFormGroup.controls)
+  }
+
+  confirmThirdStep(){
+    console.log("third form group: ", this.thirdFormGroup.controls)
+
   }
 
   saveBusiness() {
